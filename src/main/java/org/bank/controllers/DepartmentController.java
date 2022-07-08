@@ -1,6 +1,6 @@
 package org.bank.controllers;
 
-import org.bank.domain.Client;
+
 import org.bank.domain.Department;
 import org.bank.services.DepartmentService;
 import org.springframework.beans.factory.annotation.Autowired;

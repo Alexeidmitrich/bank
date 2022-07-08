@@ -21,8 +21,6 @@ public class ClientController {
     }
     @GetMapping("/clients")
     public List<Client> getClients() {
-        Client client = clientService.getClientById(4);
-        System.out.println(client);
         return  clientService.getAllClients();
     }
     @GetMapping("/clients/{id}")

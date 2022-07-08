@@ -4,14 +4,12 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Table;
 import javax.persistence.Transient;
-import java.util.ArrayList;
-import java.util.List;
+
 
 @Entity
 @Table(name = "clients")
 public class Client extends Person{
     @Column(nullable = false, length = 10)
-
     protected int serie;
     @Column(nullable = false, length = 15)
     protected String passnumber;
