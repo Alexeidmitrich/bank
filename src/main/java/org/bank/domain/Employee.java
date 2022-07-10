@@ -1,17 +1,16 @@
 package org.bank.domain;
 
-import javax.persistence.Entity;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 @Entity
-@Table(name = "employees")
+@Table(name = "employee")
 public class Employee extends Person {
 
     protected double salary;
 
-    /*@ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-    @JoinColumn(name = "number_department", nullable = false)
-    protected BankDepartment bankDepartment;
+   /* @ManyToOne
+    @JoinColumn(name = "bank_id", nullable = false)
+    protected Department bank;
 */
     public Employee(int number, String firstname, String lastname, double salary) {
         super(number, firstname, lastname);
@@ -38,6 +37,9 @@ public class Employee extends Person {
     public double getSalary() {
         return salary;
     }
+
+
+
 
     @Override
     public String toString() {
