@@ -13,13 +13,14 @@ import java.util.List;
 public class EmployeeController {
     @Autowired
     private EmployeeService employeeService;
+
+
     @GetMapping("/employees")
     public List<Employee> getEmployee(){
         return employeeService.getAllEmployees();
     }
     @GetMapping("/employees/{id}")
     public Employee getEmployeeById(@PathVariable int id) {
-
         return  employeeService.getEmployeeById(id);
     }
 
