@@ -48,6 +48,10 @@ public class Department {
         return city;
     }
 
+    public void setCity(String city) {
+        this.city = city;
+    }
+
     public  void print(){
         System.out.println(id + " " + city);
     }

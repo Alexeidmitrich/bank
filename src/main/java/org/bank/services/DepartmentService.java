@@ -19,4 +19,18 @@ public class DepartmentService {
     public Department getDepartmentById(int id){
         return repository.findById(id).get();
     }
+
+    public void saveDepartment(Department department){
+        repository.save(department);
+    }
+
+    public void updateDepartment(int id, Department department){
+        Department oldDepartment = repository.getReferenceById(id);
+
+        oldDepartment.setCity(department.getCity());
+        repository.save(oldDepartment);
+    }
+    public void deleteDepartment(int id){
+        repository.deleteById(id);
+    }
 }
