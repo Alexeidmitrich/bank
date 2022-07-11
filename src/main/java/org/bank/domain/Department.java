@@ -19,9 +19,7 @@ public class Department {
     @XmlElement
     private String city;
 
-
-    @OneToMany(fetch = FetchType.EAGER, mappedBy = "bankDepartment", targetEntity = Client.class)
-    //@Transient
+   @OneToMany(fetch = FetchType.EAGER, mappedBy = "bankDepartment", targetEntity = Client.class)
    private List<Client> clientsList = new ArrayList<>();
 
    //@OneToMany(fetch = FetchType.LAZY, mappedBy = "bank", targetEntity = Employee.class)
