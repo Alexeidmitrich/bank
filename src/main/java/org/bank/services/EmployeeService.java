@@ -21,4 +21,15 @@ public class EmployeeService {
     public Employee getEmployeeById(int id){
         return repository.findById(id).get();
     }
+    public void deleteEmployee(int id){
+        repository.deleteById(id);
+    }
+    public void addNewEmployee(Employee employee){
+        repository.save(employee);
+    }
+    public void updateEmployee(int id, Employee employee){
+        Employee oldEmployee = repository.getReferenceById(id);
+        oldEmployee.setFirstname(employee.getFirstname());
+        repository.save(oldEmployee);
+    }
 }

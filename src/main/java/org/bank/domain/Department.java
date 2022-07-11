@@ -21,11 +21,10 @@ public class Department {
 
 
     @OneToMany(fetch = FetchType.EAGER, mappedBy = "bankDepartment", targetEntity = Client.class)
-    //@Transient
-   private List<Client> clientsList = new ArrayList<>();
+    private List<Client> clientsList = new ArrayList<>();
 
-   //@OneToMany(fetch = FetchType.LAZY, mappedBy = "bank", targetEntity = Employee.class)
-  // private List<Employee> employeeList = new ArrayList<>();
+    //@OneToMany(fetch = FetchType.LAZY, mappedBy = "bank", targetEntity = Employee.class)
+    // private List<Employee> employeeList = new ArrayList<>();
 
     public Department() {
 
@@ -56,7 +55,7 @@ public class Department {
         System.out.println(id + " " + city);
     }
 
-   @Override
+    @Override
     public String toString() {
         return "Department{" +
                 "id=" + id +

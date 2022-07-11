@@ -3,10 +3,12 @@ package org.bank.domain;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "employee")
+@Table(name = "employees")
 public class Employee extends Person {
-
+    @Column(name = "salary")
     protected double salary;
+    /*@Column(name = "number_department")
+    protected Department department;*/
 
    /* @ManyToOne
     @JoinColumn(name = "bank_id", nullable = false)
@@ -15,6 +17,7 @@ public class Employee extends Person {
     public Employee(int number, String firstname, String lastname, double salary) {
         super(number, firstname, lastname);
         this.salary = salary;
+        //this.department = department;
     }
 
     public Employee(String firstname, String lastname, double salary) {
@@ -34,12 +37,10 @@ public class Employee extends Person {
         }
     }
 
+
     public double getSalary() {
         return salary;
     }
-
-
-
 
     @Override
     public String toString() {

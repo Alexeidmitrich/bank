@@ -1,6 +1,8 @@
 package org.bank.domain;
 
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 
 @Entity
@@ -72,7 +74,29 @@ public class Client extends Person{
         return salt;
     }
 
+    public void setSerie(int serie) {
+        this.serie = serie;
+    }
 
+    public void setPassnumber(String passnumber) {
+        this.passnumber = passnumber;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public void setPhone(String phone) {
+        this.phone = phone;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    public void setSalt(String salt) {
+        this.salt = salt;
+    }
     public Department getBankDepartment() {
         return bankDepartment;
     }
@@ -80,6 +104,8 @@ public class Client extends Person{
     public void setBankDepartment(Department bankDepartment) {
         this.bankDepartment = bankDepartment;
     }
+
+
 
     public void printClient(){
         System.out.println(getFirstname() + " " + getLastname() + " " + getSerie() + " " + getPassnumber() + " " + getEmail() + " " + getPhone() + " " + getPassword() + " " + getSalt() );

@@ -26,7 +26,6 @@ public class DepartmentService {
 
     public void updateDepartment(int id, Department department){
         Department oldDepartment = repository.getReferenceById(id);
-
         oldDepartment.setCity(department.getCity());
         repository.save(oldDepartment);
     }
