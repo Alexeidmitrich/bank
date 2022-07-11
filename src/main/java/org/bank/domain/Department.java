@@ -20,11 +20,11 @@ public class Department {
     private String city;
 
 
-    @OneToMany(fetch = FetchType.EAGER, mappedBy = "bankDepartment", targetEntity = Client.class)
+    @OneToMany(fetch = FetchType.EAGER, cascade = {CascadeType.ALL}, mappedBy = "bankDepartment", targetEntity = Client.class)
     private List<Client> clientsList = new ArrayList<>();
 
-    //@OneToMany(fetch = FetchType.LAZY, mappedBy = "bank", targetEntity = Employee.class)
-    // private List<Employee> employeeList = new ArrayList<>();
+    @OneToMany(fetch = FetchType.LAZY, cascade = {CascadeType.ALL}, mappedBy = "bank", targetEntity = Employee.class)
+    private List<Employee> employeeList = new ArrayList<>();
 
     public Department() {
 
