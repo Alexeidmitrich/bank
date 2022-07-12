@@ -1,27 +1,27 @@
 package org.bank.domain;
 
+import com.fasterxml.jackson.annotation.*;
+
 import javax.persistence.*;
 
 @Entity
 @Table(name = "employee")
+@Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
+//@JsonIdentityInfo(generator= ObjectIdGenerators.IntSequenceGenerator.class, property="@number")
+
 public class Employee extends Person {
-
+    @Column(name = "salary")
     protected double salary;
+    /*@Column(name = "number_department")
+    protected Department department;*/
 
-   /* @ManyToOne
+    @ManyToOne(cascade = {CascadeType.PERSIST, CascadeType.REMOVE}, fetch = FetchType.EAGER)
     @JoinColumn(name = "bank_id", nullable = false)
+    @JsonManagedReference
+    //@JsonIgnoreProperties("employeeList")
     protected Department bank;
-*/
-    public Employee(int number, String firstname, String lastname, double salary) {
-        super(number, firstname, lastname);
-        this.salary = salary;
-    }
 
-    public Employee(String firstname, String lastname, double salary) {
-        super(firstname, lastname);
-        this.salary = salary;
 
-    }
     public Employee(){
     }
     public void printEmployee(){
@@ -34,12 +34,18 @@ public class Employee extends Person {
         }
     }
 
+
     public double getSalary() {
         return salary;
     }
 
+    public Department getBank() {
+        return bank;
+    }
 
-
+    public void setBank(Department bank) {
+        this.bank = bank;
+    }
 
     @Override
     public String toString() {

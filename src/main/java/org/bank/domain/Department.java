@@ -1,5 +1,9 @@
 package org.bank.domain;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+import org.bank.dto.BankDTO;
+
 import javax.persistence.*;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
@@ -19,11 +23,13 @@ public class Department {
     @XmlElement
     private String city;
 
-   @OneToMany(fetch = FetchType.EAGER, mappedBy = "bankDepartment", targetEntity = Client.class)
+   @OneToMany(fetch = FetchType.EAGER, cascade = {CascadeType.PERSIST}, mappedBy = "bankDepartment", targetEntity = Client.class)
    private List<Client> clientsList = new ArrayList<>();
 
-   //@OneToMany(fetch = FetchType.LAZY, mappedBy = "bank", targetEntity = Employee.class)
-  // private List<Employee> employeeList = new ArrayList<>();
+
+    @JsonBackReference
+    @OneToMany(fetch = FetchType.LAZY, cascade = {CascadeType.PERSIST}, mappedBy = "bank", targetEntity = Employee.class)
+    private List<Employee> employeeList = new ArrayList<>();
 
     public Department() {
 
@@ -54,7 +60,17 @@ public class Department {
         System.out.println(id + " " + city);
     }
 
-   @Override
+
+    public List<Employee> getEmployeeList() {
+        return employeeList;
+    }
+
+    public void setEmployeeList(List<Employee> employeeList) {
+        this.employeeList = employeeList;
+    }
+
+
+    @Override
     public String toString() {
         return "Department{" +
                 "id=" + id +
