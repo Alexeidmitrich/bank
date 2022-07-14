@@ -1,6 +1,5 @@
 package org.bank.services;
 
-import org.bank.domain.Client;
 import org.bank.domain.Department;
 import org.bank.domain.Employee;
 import org.bank.repositories.DepartmentRepository;
@@ -25,10 +24,10 @@ public class DepartmentService {
     }
 
 
-    /*public List<Employee> getEmployeesByDepartmentId(int id) {
+    public List<Employee> getEmployeesByDepartmentId(int id) {
         Department department = getDepartmentById(id);
         return department.getEmployeeList();
-    }*/
+    }
 //DAO
     //DTO = Data Transfer Object
     public void saveDepartment(Department department){

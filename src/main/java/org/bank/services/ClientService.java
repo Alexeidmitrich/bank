@@ -1,6 +1,7 @@
 package org.bank.services;
 
 import org.bank.domain.Client;
+import org.bank.domain.Department;
 import org.bank.exception.PersonNotFoundException;
 import org.bank.repositories.ClientRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,6 +27,10 @@ public class ClientService {
         Client oldClient = repository.getReferenceById(id);
         oldClient.setLastname(client.getLastname());
         repository.save(oldClient);
+    }
+    public Department getDepartmentByClientId(int id){
+        Client client = getClientById(id);
+        return client.getDepartment();
     }
 
     public Client getClientById(int id){

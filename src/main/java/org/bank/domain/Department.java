@@ -22,7 +22,7 @@ public class Department {
     @XmlElement
     private String city;
    //@JsonBackReference
-   @OneToMany(fetch = FetchType.EAGER, cascade = {CascadeType.PERSIST}, mappedBy = "bankDepartment", targetEntity = Client.class)
+   @OneToMany(fetch = FetchType.EAGER, cascade = {CascadeType.PERSIST}, mappedBy = "department", targetEntity = Client.class)
    private List<Client> clientsList = new ArrayList<>();
 
 
@@ -69,14 +69,6 @@ public class Department {
 
     public void setEmployeeList(List<Employee> employeeList) {
         this.employeeList = employeeList;
-    }
-
-    public List<Client> getClientsList() {
-        return clientsList;
-    }
-
-    public void setClientsList(List<Client> clientsList) {
-        this.clientsList = clientsList;
     }
 
     @Override

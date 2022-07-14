@@ -28,10 +28,10 @@ public class DepartmentController {
     }
 
 
-    /*@GetMapping("/department/{id}/employees")
+    @GetMapping("/department/{id}/employees")
     public List<Employee> getEmployeesByDepartmentId(@PathVariable int id) {
         return  departmentService.getEmployeesByDepartmentId(id);
-    }*/
+    }
 
     @PostMapping("/department")
     public String saveNewDepartment(@RequestBody  Department department) {
