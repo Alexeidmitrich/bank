@@ -1,8 +1,7 @@
 package org.bank.domain;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
-import com.fasterxml.jackson.annotation.JsonManagedReference;
-import org.bank.dto.BankDTO;
+import org.bank.dto.DepartmentDTO;
 
 import javax.persistence.*;
 import javax.xml.bind.annotation.XmlElement;
@@ -22,13 +21,13 @@ public class Department {
     private int id;
     @XmlElement
     private String city;
-
+   //@JsonBackReference
    @OneToMany(fetch = FetchType.EAGER, cascade = {CascadeType.PERSIST}, mappedBy = "bankDepartment", targetEntity = Client.class)
    private List<Client> clientsList = new ArrayList<>();
 
 
     @JsonBackReference
-    @OneToMany(fetch = FetchType.LAZY, cascade = {CascadeType.PERSIST}, mappedBy = "bank", targetEntity = Employee.class)
+    @OneToMany(fetch = FetchType.LAZY, cascade = {CascadeType.ALL}, mappedBy = "bank", targetEntity = Employee.class)
     private List<Employee> employeeList = new ArrayList<>();
 
     public Department() {
@@ -60,6 +59,9 @@ public class Department {
         System.out.println(id + " " + city);
     }
 
+    public DepartmentDTO toDepartmentDTO() {
+        return new DepartmentDTO(this);
+    }
 
     public List<Employee> getEmployeeList() {
         return employeeList;
@@ -69,6 +71,13 @@ public class Department {
         this.employeeList = employeeList;
     }
 
+    public List<Client> getClientsList() {
+        return clientsList;
+    }
+
+    public void setClientsList(List<Client> clientsList) {
+        this.clientsList = clientsList;
+    }
 
     @Override
     public String toString() {

@@ -3,7 +3,7 @@ package org.bank.controllers;
 
 import org.bank.domain.Department;
 import org.bank.domain.Employee;
-import org.bank.dto.BankDTO;
+import org.bank.dto.DepartmentDTO;
 import org.bank.services.DepartmentService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -22,16 +22,16 @@ public class DepartmentController {
         return departmentService.getAllDepartment();
     }
     @GetMapping("/department/{id}")
-    public BankDTO getDepartmentById(@PathVariable int id) {
+    public DepartmentDTO getDepartmentById(@PathVariable int id) {
         Department department = departmentService.getDepartmentById(id);
-        return  new BankDTO(department);
+        return  department.toDepartmentDTO();
     }
 
 
-    @GetMapping("/department/{id}/employees")
+    /*@GetMapping("/department/{id}/employees")
     public List<Employee> getEmployeesByDepartmentId(@PathVariable int id) {
         return  departmentService.getEmployeesByDepartmentId(id);
-    }
+    }*/
 
     @PostMapping("/department")
     public String saveNewDepartment(@RequestBody  Department department) {

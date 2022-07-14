@@ -1,5 +1,7 @@
 package org.bank.domain;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -24,6 +26,7 @@ public class Client extends Person{
 
     @ManyToOne
     @JoinColumn(name = "number_department")
+    //@JsonManagedReference
     protected Department bankDepartment;
 
 
