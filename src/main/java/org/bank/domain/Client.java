@@ -25,7 +25,7 @@ public class Client extends Person{
     @Column(nullable = false, length = 200)
     protected String salt;
 
-    @ManyToOne
+    @ManyToOne(cascade = {CascadeType.PERSIST, CascadeType.REMOVE}, fetch = FetchType.EAGER)
     @JoinColumn(name = "number_department")
     //@JsonManagedReference
     protected Department department;

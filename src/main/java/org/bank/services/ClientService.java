@@ -2,10 +2,8 @@ package org.bank.services;
 
 import org.bank.domain.Client;
 import org.bank.domain.Department;
-import org.bank.exception.PersonNotFoundException;
 import org.bank.repositories.ClientRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 
 import java.util.List;

@@ -11,7 +11,6 @@ import java.util.List;
 
 @Entity
 @Table(name = "bank")
-@XmlRootElement
 public class Department {
 
     @Id

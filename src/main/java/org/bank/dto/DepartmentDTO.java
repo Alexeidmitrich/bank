@@ -2,7 +2,6 @@ package org.bank.dto;
 
 import org.bank.domain.Department;
 import org.bank.domain.Employee;
-
 import java.util.List;
 
 public class DepartmentDTO {

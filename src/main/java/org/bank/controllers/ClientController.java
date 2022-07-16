@@ -2,7 +2,6 @@ package org.bank.controllers;
 
 import org.bank.domain.Client;
 import org.bank.domain.Department;
-import org.bank.dto.ClientDTO;
 import org.bank.services.ClientService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
