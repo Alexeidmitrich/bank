@@ -2,6 +2,7 @@ package org.bank.controllers;
 
 import org.bank.domain.Client;
 import org.bank.domain.Department;
+import org.bank.dto.ClientDTO;
 import org.bank.services.ClientService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -22,6 +23,11 @@ public class ClientController {
     public List<Client> getClients() {
         return  clientService.getAllClients();
     }
+    @GetMapping("/clients/{id}")
+    public ClientDTO getClientsById(@PathVariable int id) {
+        Client client = clientService.getClientById(id);
+        return  client.toClientDTO();
+    }
 
     @GetMapping("/clients/{id}/department")
     public Department getDepartmentByClientId(@PathVariable int id){
@@ -37,10 +43,6 @@ public class ClientController {
     public String updateClient(@PathVariable int id, @RequestBody Client client){
         clientService.updateClient(id, client);
         return "Ok";
-    }
-    @GetMapping("/clients/{id}")
-    public Client getClientsById(@PathVariable int id) {
-        return  clientService.getClientById(id);
     }
     @DeleteMapping("/clients/{id}")
     public String deleteClient(@PathVariable int id){

@@ -1,11 +1,7 @@
 package org.bank.domain;
 
-import com.fasterxml.jackson.annotation.JsonManagedReference;
 import org.bank.dto.ClientDTO;
-
 import javax.persistence.*;
-import java.util.ArrayList;
-import java.util.List;
 
 
 @Entity
@@ -27,12 +23,9 @@ public class Client extends Person{
 
     @ManyToOne(cascade = {CascadeType.PERSIST, CascadeType.REMOVE}, fetch = FetchType.EAGER)
     @JoinColumn(name = "number_department")
-    //@JsonManagedReference
     protected Department department;
 
-
     public Client() {
-
     }
 
     public Client(int number, String firstname, String lastname, int serie, String passnumber, String email, String phone, String password, String salt) {
@@ -114,6 +107,6 @@ public class Client extends Person{
     }
 
     public void printClient(){
-        System.out.println(getFirstname() + " " + getLastname() + " " + getSerie() + " " + getPassnumber() + " " + getEmail() + " " + getPhone() + " " + getPassword() + " " + getSalt() );
+        System.out.println(getFirstname() + " " + getLastname() + " " + getSerie() + " " + getPassnumber() + " " + getEmail() + " " + getPhone() );
     }
 }

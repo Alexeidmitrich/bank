@@ -20,9 +20,6 @@ public class ClientDTO {
 
     private String phone;
 
-    private String password;
-
-    private String salt;
     private Department department;
 
     public ClientDTO(Client client) {
@@ -33,12 +30,10 @@ public class ClientDTO {
         this.passnumber = client.getPassnumber();
         this.email = client.getEmail();
         this.phone = client.getPhone();
-        this.password = client.getPassword();
-        this.salt = client.getSalt();
         this.department = client.getDepartment();
     }
 
-    public ClientDTO(int number, String firstname, String lastname, int serie, String passnumber, String email, String phone, String password, String salt, Department department) {
+    public ClientDTO(int number, String firstname, String lastname, int serie, String passnumber, String email, String phone,  Department department) {
         this.number = number;
         this.firstname = firstname;
         this.lastname = lastname;
@@ -46,8 +41,6 @@ public class ClientDTO {
         this.passnumber = passnumber;
         this.email = email;
         this.phone = phone;
-        this.password = password;
-        this.salt = salt;
         this.department = department;
     }
 
@@ -107,21 +100,6 @@ public class ClientDTO {
         this.phone = phone;
     }
 
-    public String getPassword() {
-        return password;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
-    }
-
-    public String getSalt() {
-        return salt;
-    }
-
-    public void setSalt(String salt) {
-        this.salt = salt;
-    }
 
     public Department getDepartment() {
         return department;
