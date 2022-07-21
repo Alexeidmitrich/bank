@@ -35,17 +35,16 @@ public class Employee extends Person {
         }
     }
 
-
-    public double getSalary() {
-        return salary;
-    }
-
     public Department getBank() {
         return bank;
     }
 
     public void setBank(Department bank) {
         this.bank = bank;
+    }
+
+    public double getSalary() {
+        return salary;
     }
 
     @Override

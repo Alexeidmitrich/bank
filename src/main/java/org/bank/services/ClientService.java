@@ -1,6 +1,7 @@
 package org.bank.services;
 
 import org.bank.domain.Client;
+import org.bank.exception.PersonNotFoundException;
 import org.bank.repositories.ClientRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -27,7 +28,7 @@ public class ClientService {
     }
 
     public Client getClientById(int id){
-        return repository.findById(id).get();
+        return repository.findById(id).orElseThrow(() -> new PersonNotFoundException("Client with id" + id + " was not found"));
     }
     public void deleteClient(int id){
         repository.deleteById(id);

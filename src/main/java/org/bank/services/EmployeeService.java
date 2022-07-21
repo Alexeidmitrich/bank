@@ -3,6 +3,7 @@ package org.bank.services;
 
 import org.bank.domain.Department;
 import org.bank.domain.Employee;
+import org.bank.exception.PersonNotFoundException;
 import org.bank.repositories.DepartmentRepository;
 import org.bank.repositories.EmployeeRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,7 +24,7 @@ public class EmployeeService {
         return repository.findAll();
     }
     public Employee getEmployeeById(int id){
-        return repository.findById(id).get();
+        return repository.findById(id).orElseThrow(() -> new PersonNotFoundException("Employee wiht id" + id + " was not found"));
     }
     public void deleteEmployee(int id){
         repository.deleteById(id);
