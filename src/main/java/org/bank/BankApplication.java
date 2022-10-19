@@ -18,6 +18,12 @@ public class BankApplication {
 	 */
 
 	/*
+	GET
+	PUT  -  update
+	POST - create
+	DELETE
+	 */
+	/*
 	Spring Boot Architecture
 		Controller
 		Service - Business logic

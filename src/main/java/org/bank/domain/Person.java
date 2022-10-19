@@ -46,6 +46,18 @@ public abstract class Person {
         return lastname;
     }
 
+    public void setNumber(int number) {
+        this.number = number;
+    }
+
+    public void setFirstname(String firstname) {
+        this.firstname = firstname;
+    }
+
+    public void setLastname(String lastname) {
+        this.lastname = lastname;
+    }
+
     public void printInformation(){
         System.out.println(getFirstname() + " " + getLastname() + " " + getNumber());
     }

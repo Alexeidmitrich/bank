@@ -1,27 +1,27 @@
 package org.bank.domain;
 
-import javax.persistence.Entity;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 @Entity
-@Table(name = "employees")
+@Table(name = "employee")
 public class Employee extends Person {
-
+    @Column(name = "salary")
     protected double salary;
 
-    /*@ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @ManyToOne(cascade = {CascadeType.ALL})
     @JoinColumn(name = "number_department", nullable = false)
-    protected BankDepartment bankDepartment;
-*/
+    protected Department bank;
+
     public Employee(int number, String firstname, String lastname, double salary) {
         super(number, firstname, lastname);
         this.salary = salary;
+        //this.department = department;
     }
 
-    public Employee(String firstname, String lastname, double salary) {
+    public Employee(String firstname, String lastname, double salary, Department bank) {
         super(firstname, lastname);
         this.salary = salary;
-
+        this.bank = bank;
     }
     public Employee(){
     }
@@ -35,6 +35,14 @@ public class Employee extends Person {
         }
     }
 
+    public Department getBank() {
+        return bank;
+    }
+
+    public void setBank(Department bank) {
+        this.bank = bank;
+    }
+
     public double getSalary() {
         return salary;
     }
@@ -43,6 +51,7 @@ public class Employee extends Person {
     public String toString() {
         return "Employee{" +
                 "salary=" + salary +
+                ", bank=" + bank +
                 '}';
     }
 }

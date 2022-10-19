@@ -3,6 +3,8 @@ package org.bank.domain;
 import javax.persistence.*;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Table(name = "bank")
@@ -18,13 +20,14 @@ public class Department {
     private String city;
 
 
-    //@OneToMany(fetch = FetchType.LAZY, mappedBy = "bankDepartment")
-    //@Transient
-//    private List<Client> clientsList = new ArrayList<>();
+    @OneToMany(fetch = FetchType.EAGER, cascade = {CascadeType.ALL}, mappedBy = "bankDepartment", targetEntity = Client.class)
+    private List<Client> clientsList = new ArrayList<>();
 
-   // @OneToMany(fetch = FetchType.LAZY, mappedBy = "bankDepartment")
-  //  private List<Employee> employeeList = new ArrayList<>();
+    @OneToMany(fetch = FetchType.LAZY, cascade = {CascadeType.ALL}, mappedBy = "bank", targetEntity = Employee.class)
+    private List<Employee> employeeList = new ArrayList<>();
+
     public Department() {
+
     }
 
     public Department(String city) {
@@ -44,11 +47,15 @@ public class Department {
         return city;
     }
 
+    public void setCity(String city) {
+        this.city = city;
+    }
+
     public  void print(){
         System.out.println(id + " " + city);
     }
 
-   @Override
+    @Override
     public String toString() {
         return "Department{" +
                 "id=" + id +

@@ -4,9 +4,7 @@ package org.bank.controllers;
 import org.bank.domain.Department;
 import org.bank.services.DepartmentService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -23,7 +21,23 @@ public class DepartmentController {
     }
     @GetMapping("/department/{id}")
     public Department getDepartmentById(@PathVariable int id) {
-
         return  departmentService.getDepartmentById(id);
+    }
+
+    @PostMapping("/department")
+    public String saveNewDepartment(@RequestBody  Department department) {
+        departmentService.saveDepartment(department);
+        return "OK";
+    }
+
+    @PutMapping("/department/{id}")
+    public String updateDepartment(@PathVariable int id, @RequestBody Department department) {
+        departmentService.updateDepartment(id, department);
+        return "Ok";
+    }
+    @DeleteMapping("/department/{id}")
+    public String deleteDepartment(@PathVariable int id){
+        departmentService.deleteDepartment(id);
+        return "Ok";
     }
 }
